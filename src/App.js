@@ -1,24 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [a, Seta] = useState();
+  const [b, Setb] = useState();
+
+  useEffect(() => {
+    console.log(a);
+    console.log(b);
+  }, [a][b]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <input onChange={e => Seta(Number(e.target.value))} placeholder="Number 1">
+        </input>
+        <input onChange={e => Setb(Number(e.target.value))} placeholder="Number 2">
+        </input>
+        <div>{!a ? "Number 1" : a} + {!b ? "Number 2" : b} = {(!a) || (!b) ? "Summation" : (a + b)}</div>
+      </div>
   );
 }
 
